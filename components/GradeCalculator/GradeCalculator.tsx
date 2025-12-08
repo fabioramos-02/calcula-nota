@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import { FormulaInput } from './FormulaInput';
 import { GradeFields } from './GradeFields';
-import { ResultSummary } from './ResultSummary';
 import { parseFormula } from '@/utils/parseFormula';
 import { evaluateFormula } from '@/utils/evaluateFormula';
 import type { GradeValues, StudentStatus } from '@/types';
+import { ResultSummary } from './ResultSummary';
 
 interface GradeCalculatorProps {
   initialFormula?: string;
