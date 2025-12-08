@@ -25,18 +25,21 @@ export function parseFormula(formula: string): {
     };
   }
 
-  // Extrai variáveis (padrão: letra seguida de dígito, ex: P1, T2)
-  const variablePattern = /[A-Za-z]+\d+/g;
+  // Extrai variáveis (padrão: letras seguidas opcionalmente de dígitos, ex: P1, T2, AP, A1)
+  const variablePattern = /[A-Za-z]+\d*/g;
   const extractedVars = cleaned.match(variablePattern) || [];
+  
+  // Filtra apenas variáveis válidas (pelo menos 1 letra e opcional número)
+  const validVars = extractedVars.filter(v => /^[A-Za-z]+\d*$/.test(v) && v.length >= 2);
 
   // Remove duplicatas e ordena
-  const variables = [...new Set(extractedVars)].sort();
+  const variables = [...new Set(validVars)].sort();
 
   if (variables.length === 0) {
     return {
       variables: [],
       isValid: false,
-      error: 'Fórmula deve conter pelo menos uma variável (ex: P1, T1)',
+      error: 'Fórmula deve conter pelo menos uma variável (ex: P1, T1, A1, AP)',
     };
   }
 

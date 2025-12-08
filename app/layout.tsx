@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Calculadora de Notas',
   description: 'Calcule sua média de forma rápida e fácil',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.svg',
   },
 };
 
